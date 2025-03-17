@@ -19,12 +19,12 @@ public class UserController {
 
     @PostMapping("/registro")
     public String registrarUsuario(
-            @RequestParam String nombre,
+            @RequestParam String username,
             @RequestParam String email,
             @RequestParam String password,
             @RequestParam String rol) {
         Usuario user = new Usuario();
-        user.setNombre(nombre);
+        user.setUsername(username);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
         user.setRol("ROLE_USER");

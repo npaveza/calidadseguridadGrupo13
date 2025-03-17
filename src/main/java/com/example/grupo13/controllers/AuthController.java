@@ -28,10 +28,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String processRegister(@RequestParam String nombre, @RequestParam String email,
+    public String processRegister(@RequestParam String username, @RequestParam String email,
             @RequestParam String password, Model model) {
         Usuario usuario = new Usuario();
-        usuario.setNombre(nombre);
+        usuario.setUsername(username);
         usuario.setEmail(email);
         usuario.setPassword(password);
         usuarioService.registerUser(usuario);

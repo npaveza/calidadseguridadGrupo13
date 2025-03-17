@@ -3,10 +3,12 @@ package com.example.grupo13.services;
 import java.util.Optional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.example.grupo13.models.Usuario;
 import com.example.grupo13.repositories.UserRepository;
 
+@Service
 public class UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;

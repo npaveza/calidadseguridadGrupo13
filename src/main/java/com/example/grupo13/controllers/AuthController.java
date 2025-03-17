@@ -11,14 +11,14 @@ import com.example.grupo13.services.UserService;
 
 @Controller
 public class AuthController {
-    private final UserService usuarioService;
+    private final UserService userService;
 
-    public AuthController(UserService usuarioService) {
-        this.usuarioService = usuarioService;
+    public AuthController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/login")
-    public String loguin() {
+    public String login() {
         return "login";
     }
 
@@ -34,10 +34,23 @@ public class AuthController {
         usuario.setUsername(username);
         usuario.setEmail(email);
         usuario.setPassword(password);
-        usuarioService.registerUser(usuario);
+        userService.registerUser(usuario);
         model.addAttribute("message", "Usuario registrado exitosamente");
         return "redirect:/login";
     }
 
+    @PostMapping("/login")
+    public String processLogin(@RequestParam String username, @RequestParam String password, Model model) {
+        Usuario usuario = new Usuario();
+        usuario.setUsername(username);
+        usuario.setPassword(password);
+        if (userService.login(usuario)) {
+            // Login correcto
+            return "redirect:/";
+        } else {
+            // Login incorrecto
+            model.addAttribute("message", "Usuario o contraseña incorrectos");
+            return "login";
+        }
+    }
 }
-

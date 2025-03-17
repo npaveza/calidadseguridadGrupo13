@@ -25,6 +25,7 @@ services:
     environment:
       H2_OPTIONS: "ifNotExists"
     volumes:
+      - ./init.sql: /opt/h2/bin/init.sql
       - gameevents-data: /data
 
 volumes:

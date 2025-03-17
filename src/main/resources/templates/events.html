@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Game Events - Eventos</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Eventos de Videojuegos</h1>
+            <nav>
+                <a href="home.html">Inicio</a>
+                <a href="profile.html">Perfil</a>
+                <a href="login.html">Cerrar Sesión</a>
+            </nav>
+        </header>
+
+        <section>
+            <h2>Buscar Eventos</h2>
+            <form method="get" action="events.html">
+                <input type="text" name="categoria"  placeholder="Categoria">
+                <input type="date" name="fecha">
+                <input type="text" name="ubicacion" placeholder="Ubicación">
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+        <section>
+            <h2>Lista de Eventos</h2>
+            <ul>
+                <li th:each="evento : ${eventos}">
+                    <h3 th:text="${evento.nombre}"></h3>
+                    <p th:text="${evento.descripcion}"></p>
+                    <p><strong>Fecha:</strong> <span th:text="${evento.fecha}"></span></p>
+                    <p><Strong>Ubicación:</Strong> <span th:text="${evento.ubicacion}"></span></p>
+                    <a th:href="@{/events/{id}(id=${evento.id})}">Ver más</a>
+                </li>
+            </ul>
+        </section>
+        <footer>
+            <p>&copy; 2025 Game Events</p>
+        </footer>
+    </body>
+</html>

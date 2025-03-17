@@ -1,29 +1,40 @@
 package com.example.grupo13.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Table(name = "eventos")
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titulo;
+    @Column(nullable = false)
+    private String nombre;
+    
+    @Column(nullable = false)
     private String descripcion;
-    private String categoria;
-    private String direccion;
-    private LocalDateTime fechahora;
-    private String organizador;
 
-    private boolean estacionamiento;
-    private boolean locomocion;
-    private boolean comidas;
-    private boolean alojamiento;
+    @Column(nullable = false)
+    private LocalDate fecha;
+
+    @Column(nullable = false)
+    private String ubicacion;
+
+    @Column(nullable = false)
+    private String organizadores;
+
+    @Column(nullable = false)
+    private String servicios;
 }

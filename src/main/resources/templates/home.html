@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Game Events - Inicio</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Bienvenido a Game Events</h1>
+            <navv>
+                <a href="/events">Eventos</a>
+                <a href="/login">Iniciar Sesión</a>
+                <a href="/register">Registrarse</a>
+            </navv>
+        </header>
+
+        <section>
+            <h2>Próximos Eventos</h2>
+            <ul>
+                <li th:each="evento : ${eventos}">
+                    <h3 th:text="${evento.nombre}"></h3>
+                    <p th:text="${evento.descripcion}"></p>
+                    <a th:href="@{/events/{id}(id=${evento.id})}">Ver más</a>
+                </li>
+            </ul>
+        </section>
+        <footer>
+            <p>&copy; 2025 Game Events</p>
+        </footer>
+    </body>
+</html>

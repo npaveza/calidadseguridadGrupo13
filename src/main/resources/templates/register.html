@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+    <head>
+        <title>Game Events - Registro</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Registro de Usuario</h1>
+            <nav>
+                <a href="home.html">Inicio</a>
+                <a href="login.html">Iniciar Sesión</a>
+            </nav>
+        </header>
+        <section>
+            <form th:action="@{/register}" method="post">
+                <div>
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" required>
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="text" name="email" required>
+                </div>
+                <div>
+                    <label>Contraseña:</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div>
+                    <label>Confirmar Contraseña:</label>
+                    <input type="confirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit">Registrarse</button>
+            </form>
+        </section>
+        <footer>
+            <p>&copy; 2025 Game Events</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns.th="http://www.thymeleaf.org">
+    <head>
+        <title>Game Events - Iniciar Sesiónh</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Iniciar Sesión</h1>
+            <nav>
+                <a href="home.html">Inicio</a>
+                <a href="register.html">Registrarse</a>
+            </nav>
+        </header>
+        <section>
+            <form th:action="@{/login}" method="post">
+                <div>
+                    <label>Usuario:</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div>
+                    <label>Contraseña:</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit">Ingresar</button>
+            </form>
+            <div th:if="${param.error}">
+                <p style="color:red;">Usuario o contraseña incorrectos.</p>
+            </div>
+        </section>
+        <footer>
+            <p>&copy; 2025 Game Events</p>
+        </footer>
+    </body>
+</html>

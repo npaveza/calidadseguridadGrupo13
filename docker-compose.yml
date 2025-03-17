@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  gameevents-app:
+    build: .
+    container_name: gameevents-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:file:/data/gameevents
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_DATASOURCE_ENABLED: "true"
+    volumes:
+      - gameevents-data: /data
+    
+  database:
+    image: oscarfonts/h2
+    container_name: gameevents-db
+    ports:
+      - "1521:1521"
+      - "81:81"
+    environment:
+      H2_OPTIONS: "ifNotExists"
+    volumes:
+      - gameevents-data: /data
+
+volumes:
+  gameevents-data:

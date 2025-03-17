@@ -1,7 +1,6 @@
 package com.example.grupo13.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,16 +16,16 @@ public class EventService {
     public List<Evento> listarEventos() {
         return eventRepository.findAll();
     }
-
-    public Optional<Evento> obtenerEvento(Long id) {
-        return eventRepository.findById(id);
-    }
     
     public void guardarEvento(Evento event) {
         eventRepository.save(event);
     }
 
-    public void eliminarEvento(Long id) {
-        eventRepository.deleteById(id);
+    public List<Evento> buscarEventosPorNombre(String nombre) {
+        return eventRepository.findByNombreContaining(nombre);
+    }
+
+    public List<Evento> buscarEventosPorUbicacion(String ubicacion) {
+        return eventRepository.findByUbicacionContaining(ubicacion);
     }
 }
